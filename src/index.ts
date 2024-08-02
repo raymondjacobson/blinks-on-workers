@@ -17,6 +17,7 @@ import {
   ActionPostResponse,
 } from '@solana/actions';
 import { Buffer } from "buffer";
+import { cors } from 'hono/cors';
 
 const DONATION_DESTINATION_WALLET =
   '3h4AtoLTh3bWwaLhdtgQtcC3a3Tokb8NJbtqR9rhp7p6';
@@ -24,6 +25,8 @@ const DONATION_AMOUNT_SOL_OPTIONS = [1, 5, 10];
 const DEFAULT_DONATION_AMOUNT_SOL = 1;
 
 const app = new OpenAPIHono();
+
+app.use(cors());
 
 app.openapi(
   createRoute({
