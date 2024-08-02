@@ -26,7 +26,11 @@ const DEFAULT_DONATION_AMOUNT_SOL = 1;
 
 const app = new OpenAPIHono();
 
-app.use(cors());
+app.use('*', cors({
+  origin: '*',
+  allowMethods: ['GET', 'POST', 'PUT', 'OPTIONS'],
+  allowHeaders: ['Content-Type', 'Authorization', 'Content-Encoding', 'Accept-Encoding']
+}))
 
 app.openapi(
   createRoute({
